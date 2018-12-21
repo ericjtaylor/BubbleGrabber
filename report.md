@@ -6,7 +6,7 @@ My trained agent was able to successfully meet specifications by performing 100 
 
 ### Solution
 
-The agent was implemented as a Deep Deterministic Policy Gradient (DDPG) agent. DDPG is a good fit for this task because it handles continuous control problems without the need for discretization. DDPG is an actor-critic method, with both the actor and the critic having a local and target network for stability. An Ornstein-Uhlenbeck process was used to add noise to the actions taken by the agent during training, in order to encourage exploration.  
+The agent was implemented as a Deep Deterministic Policy Gradient (DDPG) agent. DDPG is a good fit for this task because it handles continuous control problems without the need for discretization. DDPG is an actor-critic method, with both the actor and the critic having a local and target network for stability. An Ornstein-Uhlenbeck process was used to add noise to the actions taken by the agent during training, in order to encourage exploration. For more details on the DDPG algorithm, please refer to its paper [Continuous control with deep reinforcement learning](https://arxiv.org/abs/1509.02971).  
 
 The network design of the actor and critic were identical, using 3 fully connected hidden layers with 128 nodes each.  
 
