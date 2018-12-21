@@ -12,8 +12,8 @@ ReLU non-linearities were used, except for the output layer where tanh was used 
 
 Notable changes deviating from the template DDPG implementation of the course include:
 
-*adding batch normalization after the first layer (following the non-linearity) of both the actor and critic networks
-*adding gradient clipping as recommended in the course project notes
+* adding batch normalization after the first layer (following the non-linearity) of both the actor and critic networks  
+* adding gradient clipping as recommended in the course project notes  
 
 Training parameters were:  
 
