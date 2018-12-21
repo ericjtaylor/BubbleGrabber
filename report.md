@@ -6,7 +6,9 @@ My trained agent was able to successfully meet specifications by performing 100 
 
 ### Solution
 
-The agent was implemented as a DDPG agent with 3 fully connected hidden layers with 128 nodes each for both the actor and critic networks.  
+The agent was implemented as a Deep Deterministic Policy Gradient (DDPG) agent. DDPG is an actor-critic method, with both the actor and the critic having a local and target network for stability. An Ornstein-Uhlenbeck process was used to add noise to the actions taken by the agent during training, in order to encourage exploration.  
+
+The network design of the actor and critic were identical, using 3 fully connected hidden layers with 128 nodes each.  
 
 ReLU non-linearities were used, except for the output layer where tanh was used in order to provide output control in the range of +\- 1.
 
