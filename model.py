@@ -27,7 +27,6 @@ class Actor(nn.Module):
         self.fc2 = nn.Linear(fc_units, fc_units)
         self.fc3 = nn.Linear(fc_units, action_size)
         self.bn1 = nn.BatchNorm1d(fc_units)
-        self.bn2 = nn.BatchNorm1d(fc_units)
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -42,7 +41,6 @@ class Actor(nn.Module):
         x = F.relu(self.fc1(state))
         x = self.bn1(x)
         x = F.relu(self.fc2(x))
-        #x = self.bn2(x)
         return F.tanh(self.fc3(x))
 
 
@@ -64,7 +62,6 @@ class Critic(nn.Module):
         self.fc2 = nn.Linear(fc_units+action_size, fc_units)
         self.fc3 = nn.Linear(fc_units, 1)
         self.bn1 = nn.BatchNorm1d(fc_units)
-        self.bn2 = nn.BatchNorm1d(fc_units)
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -76,9 +73,8 @@ class Critic(nn.Module):
         """Build a critic (value) network that maps (state, action) pairs -> Q-values."""
         if state.dim() == 1:
             state = torch.unsqueeze(state, 0)
-        xs = F.leaky_relu(self.fc1(state))
+        xs = F.relu(self.fc1(state))
         xs = self.bn1(xs)
         x = torch.cat((xs, action), dim=1)
-        x = F.leaky_relu(self.fc2(x))
-        #x = self.bn2(x)
+        x = F.relu(self.fc2(x))
         return self.fc3(x)
